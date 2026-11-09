@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=5">
+  <meta name="theme-color" content="#080b10">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Moto Calc Pro">
+  <meta name="description" content="HONDA MOTO CALC PRO v1.2 รองรับการสัมผัสบน Safari คำนวณ CC ลูกสูบ เพิ่มชัก กำลังอัด หัวฉีด ความเร็ว สเตอร์ และ CVT สำหรับมอเตอร์ไซค์ฮอนด้าในไทย">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/icon-180.png">
+  <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+  <title>HONDA MOTO CALC PRO — Engineering Toolkit</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="runtimeNotice" role="alert" style="position:relative;z-index:999;padding:14px 18px;background:#371b20;border-bottom:2px solid #ff687c;color:#fff;font:600 14px/1.65 -apple-system,BlinkMacSystemFont,Arial,sans-serif;">
+ <strong style="display:block;font-size:17px;">Safari / iPhone — เปิดไฟล์ให้ถูกวิธี</strong>
+ ถ้าปุ่มแตะไม่ได้ แสดงว่าไฟล์นี้อาจกำลังถูกเปิดใน Files / Quick Look ซึ่งไม่รัน JavaScript<br>
+ <strong>วิธีทดลอง:</strong> เปิด Safari ไปที่ <a href="https://convika.com/tools/html-viewer/" style="color:#ffb0bb;text-decoration:underline">ตัวเปิด HTML</a> แล้วเลือกไฟล์ HTML นี้และเปิด Run scripts<br>
+ <strong>วิธีใช้งานถาวร:</strong> อัปโหลดไฟล์ ZIP ทั้งชุดที่ <a href="https://app.netlify.com/drop" style="color:#ffb0bb;text-decoration:underline">Netlify Drop</a> แล้วเปิด URL ที่ได้ด้วย Safari
+</div>
+<div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+<div class="app-shell">
+  <aside class="desktop-rail" aria-label="เมนูหลัก">
+    <div class="rail-mark"><span class="rail-m">M</span><span>PRO</span></div>
+    <div class="rail-links" id="desktopNav"></div>
+    <div class="rail-foot">ENGINEERING<br>TOOLKIT / TH</div>
+  </aside>
+  <div class="workspace">
+    <header class="app-header">
+      <div class="brand" role="banner"><div class="brand-mark">M<span>.</span></div><div><div class="brand-overline">MOTORCYCLE ENGINEERING</div><div class="brand-name">MOTO <b>CALC PRO</b></div></div></div>
+      <div class="header-actions"><div class="offline-chip"><span class="alive"></span> OFFLINE READY</div><button class="icon-btn" id="helpButton" type="button" aria-label="วิธีใช้งาน" title="วิธีใช้">?</button><button class="icon-btn" id="saveButton" type="button" aria-label="บันทึกชุดปรับแต่ง" title="บันทึก">⌑</button></div>
+    </header>
+    <main id="main">
+      <section class="intro-bar">
+        <div class="kicker"><span class="kicker-line"></span> HONDA THAILAND / ENGINE LAB <span class="version">V1.2</span></div>
+        <div class="intro-row"><div><h1>Precision <em>calculators.</em></h1><p>เครื่องคำนวณสมรรถนะสำหรับรถ Honda เลือกโฉมรถแล้วปรับค่าจริงของเครื่องยนต์คุณได้ทันที</p></div><button class="choose-model" id="chooseModel"><span class="choose-caption">CURRENT MOTORCYCLE <b>เปลี่ยนรุ่น</b></span><span class="choose-arrow">↗</span></button></div>
+      </section>
+      <section class="model-banner" id="modelBanner" aria-live="polite"></section>
+      <div id="pageContent"></div>
+      <footer class="site-footer"><span>HONDA MOTO CALC PRO</span><span>ข้อมูลอ้างอิง ณ 9 พ.ย. 2026 · ค่าคำนวณทางทฤษฎี</span></footer>
+    </main>
+  </div>
+</div>
+<nav class="mobile-nav" id="mobileNav" aria-label="เครื่องมือคำนวณ"></nav>
+<div class="overlay hidden" id="modelOverlay" role="presentation"><section class="dialog model-dialog" role="dialog" aria-modal="true" aria-labelledby="modelTitle"><div class="dialog-header"><div><div class="eyebrow">DATABASE / THAILAND</div><h2 id="modelTitle">เลือกรุ่นมอเตอร์ไซค์</h2></div><button class="icon-btn dialog-close" data-close="modelOverlay" aria-label="ปิด">×</button></div><div class="search-wrap"><span class="search-icon">⌕</span><input type="search" id="modelSearch" placeholder="ค้นหา Wave, Click, PCX, CBR, ปีหรือโฉม…" autocomplete="off" aria-label="ค้นหารถ Honda"></div><div class="category-scroll" id="modelCategories"></div><div class="dialog-list" id="modelList"></div><div class="dialog-footer"><span id="modelCount"></span><button class="text-button" id="createCustom">+ เพิ่มรุ่น/สเปกของฉัน</button></div></section></div>
+<div class="overlay hidden" id="helpOverlay" role="presentation"><section class="dialog help-dialog" role="dialog" aria-modal="true" aria-labelledby="helpTitle"><div class="dialog-header"><div><div class="eyebrow">TECHNICAL REFERENCE</div><h2 id="helpTitle">คู่มือและสูตรคำนวณ</h2></div><button class="icon-btn dialog-close" data-close="helpOverlay" aria-label="ปิด">×</button></div><div class="help-body">
+  <h3>01 / ความจุกระบอกสูบ</h3><p>CC = (π/4) × Bore² × Stroke × จำนวนสูบ ÷ 1,000 โดย Bore และ Stroke มีหน่วยมิลลิเมตร ค่า “เพิ่มชัก” ในแอปเลือกได้ระหว่างระยะชักเพิ่มจริง และการขยับรัศมีข้อเหวี่ยง (เพิ่มสองเท่าของระยะขยับ)</p>
+  <h3>02 / อัตราส่วนกำลังอัด (Static CR)</h3><p>CR = (Vs + Vc) ÷ Vc โดย Vs คือปริมาตรกวาดต่อสูบ ส่วน Vc คือปริมาตรคงเหลือเมื่ออยู่ศูนย์ตายบน รวมฝาสูบ ปะเก็น ระยะ Deck และปริมาตรหัวลูกสูบ การคำนวณนี้ไม่ใช่ค่ากำลังอัด PSI และไม่ใช่ Dynamic CR</p>
+  <h3>03 / ขนาดหัวฉีด</h3><p>วิธีแรงม้าใช้ BSFC (lb/hp/hr) วิธีทางอากาศใช้ VE, RPM, AFR, ความหนาแน่นอากาศ/เชื้อเพลิง และ Duty Cycle ผลลัพธ์เป็นขนาดหัวฉีด cc/min ที่แรงดันอ้างอิง หากแรงดันเปลี่ยน การไหลแปรผันตามรากที่สองของสัดส่วนแรงดันต่างข้ามหัวฉีด</p>
+  <h3>04 / ความเร็วและสเตอร์</h3><p>ความเร็ว = RPM ÷ (อัตราทดปฐมภูมิ × อัตราทดเกียร์ × สเตอร์หลัง/หน้า) × เส้นรอบวงล้อ (ม.) × 0.06 ค่านี้เป็นความเร็วตามชุดทดทางทฤษฎี ไม่ใช่ความเร็วสูงสุดจริง รถสายพานใช้อัตราทดรวมขณะวิ่ง ซึ่งเปลี่ยนตามตำแหน่งสายพาน</p>
+  <h3>แหล่งข้อมูล</h3><p>รวบรวมข้อมูลจากคู่มือ Honda, เอกสารสเปกของผู้ผลิต และผู้แทนจำหน่ายในไทย โดยมีลิงก์ต้นทางในแต่ละรุ่น ข้อมูลที่อิงเครื่องยนต์ร่วมกันจะแสดงว่า “ตระกูลเครื่อง” โปรดตรวจรหัสเครื่องและปีผลิตของรถก่อนเลือกค่าอ้างอิง</p>
+  <div class="warning-box">ข้อควรทราบ: แอปไม่สามารถยืนยันความแข็งแรงลูกสูบ/ก้านสูบ ระยะชนวาล์ว การน็อก การรับน้ำมัน หรือกำลังจริงจากการคำนวณอย่างเดียว การแต่งเครื่องควรวัดชิ้นส่วนและทดสอบจริง</div>
+</div></section></div>
+<div class="overlay hidden" id="customOverlay" role="presentation"><section class="dialog custom-dialog" role="dialog" aria-modal="true" aria-labelledby="customTitle"><div class="dialog-header"><div><div class="eyebrow">CUSTOM MOTORCYCLE</div><h2 id="customTitle">เพิ่มข้อมูลรถของฉัน</h2></div><button class="icon-btn dialog-close" data-close="customOverlay" aria-label="ปิด">×</button></div><form id="customForm" class="custom-form"><label>ชื่อรถ<input name="name" required maxlength="60" placeholder="เช่น Wave 125i ลูก 59"></label><div class="form-grid cols2"><label>ขนาดลูกสูบ (มม.)<input name="bore" required type="number" inputmode="decimal" min="20" max="200" step="0.01" value="59"></label><label>ระยะชักเดิม (มม.)<input name="stroke" required type="number" inputmode="decimal" min="20" max="200" step="0.01" value="63.1"></label><label>จำนวนสูบ<input name="cyl" required type="number" inputmode="numeric" min="1" max="8" step="1" value="1"></label><label>ระบบส่งกำลัง<select name="type"><option value="chain">สเตอร์/โซ่</option><option value="cvt">สายพาน CVT</option><option value="shaft">เพลา/อัตราทดรวม</option></select></label></div><button type="submit" class="primary-btn full">บันทึกรุ่นใหม่ <span>↗</span></button></form></section></div>
+<div class="toast" id="toast" aria-live="polite"></div>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

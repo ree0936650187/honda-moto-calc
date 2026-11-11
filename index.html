@@ -7,7 +7,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Moto Calc Pro">
-  <meta name="description" content="HONDA MOTO CALC PRO v1.3 รองรับการสัมผัสบน Safari คำนวณ CC ลูกสูบ เพิ่มชัก กำลังอัด หัวฉีด องศาแคม 2V/4V ยกวาล์ว ความเร็ว สเตอร์ และ CVT สำหรับมอเตอร์ไซค์ฮอนด้าในไทย">
+  <meta name="description" content="HONDA MOTO CALC PRO v1.4 รองรับการสัมผัสบน Safari คำนวณ CC ลูกสูบ เพิ่มชัก กำลังอัด หัวฉีด องศาแคม 2V/4V ยกวาล์ว ความเร็ว สเตอร์ และ CVT สำหรับมอเตอร์ไซค์ฮอนด้าในไทย">
   
   
   
@@ -34,10 +34,33 @@ button, input, select, textarea{position:relative}
  .mobile-nav{padding-bottom:max(7px,env(safe-area-inset-bottom))}
 }
 
-/* V1.3: Six touch-first nav items + cam analyzer */
+/* V1.4: Six touch-first nav items + cam analyzer */
 @media(max-width:720px){.mobile-nav{display:flex!important;grid-template-columns:none!important;overflow-x:auto;scrollbar-width:none;gap:2px;justify-content:space-between}.mobile-nav::-webkit-scrollbar{display:none}.mobile-tab{flex:1 0 63px;min-height:49px;font-size:9px;white-space:nowrap}.mobile-tab svg{height:21px;width:21px}}
 @media(max-width:390px){.mobile-tab{flex:1 0 61px;font-size:9px}.mobile-nav{gap:0;padding-left:2px;padding-right:2px}}
 .source-chip{border:1px solid rgba(255,85,103,.25);background:rgba(255,65,86,.055);border-radius:11px;padding:11px 13px;margin:-7px 0 18px;color:#c4cbd6;font-size:12px}.source-chip b{color:#fff}.cam-chart{width:100%;height:auto;display:block;max-width:100%;margin-bottom:13px}.cam-metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:17px}.cam-metrics .metric-box{min-width:0;padding:13px 10px}.cam-metrics .metric-box strong{font-size:20px}.cam-metrics .metric-box span{font-size:10px;line-height:1.4}.valve-stat{padding:15px 0;border-bottom:1px solid var(--line)}.valve-stat:first-child{padding-top:0}.valve-side{font-size:11px;letter-spacing:1px;font-weight:850;color:#d9e0ed}.valve-side small{display:block;font-size:10px;color:var(--muted);font-weight:500;letter-spacing:0}.valve-big{font-size:27px;font-weight:800;margin:7px 0 9px}.valve-big small{font-size:11px;color:#9eacbd;font-weight:400}.valve-meter{height:8px;background:#26303c;border-radius:20px;overflow:hidden}.valve-meter-fill{height:100%;background:linear-gradient(90deg,#93424c,#ff5474)}.valve-sub{color:#9ca9ba;font-size:11px;line-height:1.8;margin-top:9px}.panel .action-outline{margin-top:14px}.seg-control{min-width:0}.seg-control button{overflow-wrap:anywhere;min-height:45px}@media(max-width:390px){.seg-control button{font-size:10px;padding:9px 5px}}
+
+
+/* V1.4 Cam Engineering Advisor */
+.advisor-status{padding:13px 15px;border-radius:13px;border:1px solid #3c4b5c;background:#101722;margin:12px 0;font-size:13px;line-height:1.7}
+.advisor-status strong{display:block;font-size:15px;margin:0 0 4px}
+.advisor-status.warn{border-color:rgba(244,161,65,.45);background:rgba(128,70,25,.11)}
+.advisor-status.danger{border-color:rgba(255,64,80,.63);background:rgba(137,19,36,.15)}
+.advisor-status.ok{border-color:rgba(79,197,122,.42);background:rgba(20,89,61,.1)}
+.advisor-stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:10px 0 16px}
+.advisor-stat{padding:13px;background:#0b1119;border:1px solid #273241;border-radius:12px;min-width:0}
+.advisor-stat .lab{font-size:10px;color:#8f9daf;line-height:1.55}
+.advisor-stat .number{font-weight:830;letter-spacing:-.5px;font-size:19px;margin:6px 0 0;color:#fff;overflow-wrap:anywhere}
+.advisor-stat .minor{font-size:10px;line-height:1.5;color:#9aa7b9;margin:5px 0 0}
+.cam-chart-real{display:block;width:100%;height:auto;margin:12px auto;touch-action:pan-y}
+.cam-advisor-note{font-size:11px;color:#aab5c4;line-height:1.8;margin:12px 0}
+.cam-tag{display:inline-block;font-size:11px;font-weight:760;color:#eeb5bb;background:#3a202b;border:1px solid #643945;padding:4px 9px;border-radius:8px;margin:0 6px 7px 0}
+.cam-check-row{display:flex;align-items:start;justify-content:space-between;gap:9px;padding:11px 0;border-bottom:1px solid rgba(205,221,239,.09)}
+.cam-check-row .left{font-size:12px;color:#cbd5e3;flex:1}
+.cam-check-row .left small{display:block;margin-top:3px;color:#808da0;font-size:10px}
+.cam-check-row .right{text-align:right;font-weight:800;font-size:12px;max-width:48%;overflow-wrap:anywhere}
+.cam-check-row .right.ok{color:#87daa2}.cam-check-row .right.danger{color:#ff7180}.cam-check-row .right.warn{color:#e5ba7a}
+.cam-added{margin-top:19px}.cam-added .panel{margin:0}
+@media(max-width:720px){.cam-added{display:flex;flex-direction:column}.cam-added .panel{padding:17px}.advisor-stat .number{font-size:18px}}
 
 </style>
 </head>
@@ -58,11 +81,11 @@ button, input, select, textarea{position:relative}
   <div class="workspace">
     <header class="app-header">
       <div class="brand" role="banner"><div class="brand-mark">M<span>.</span></div><div><div class="brand-overline">MOTORCYCLE ENGINEERING</div><div class="brand-name">MOTO <b>CALC PRO</b></div></div></div>
-      <div class="header-actions"><div class="offline-chip"><span class="alive"></span> OFFLINE READY</div><button class="icon-btn" id="helpButton" type="button" aria-label="วิธีใช้งาน" title="วิธีใช้">?</button><button class="icon-btn" id="saveButton" type="button" aria-label="บันทึกชุดปรับแต่ง" title="บันทึก">⌑</button></div>
+      <div class="header-actions"><div class="offline-chip"><span class="alive"></span> SAFARI READY</div><button class="icon-btn" id="helpButton" type="button" aria-label="วิธีใช้งาน" title="วิธีใช้">?</button><button class="icon-btn" id="saveButton" type="button" aria-label="บันทึกชุดปรับแต่ง" title="บันทึก">⌑</button></div>
     </header>
     <main id="main">
       <section class="intro-bar">
-        <div class="kicker"><span class="kicker-line"></span> HONDA THAILAND / ENGINE LAB <span class="version">V1.3</span></div>
+        <div class="kicker"><span class="kicker-line"></span> HONDA THAILAND / ENGINE LAB <span class="version">V1.4</span></div>
         <div class="intro-row"><div><h1>Precision <em>calculators.</em></h1><p>เครื่องคำนวณสมรรถนะสำหรับรถ Honda เลือกโฉมรถแล้วปรับค่าจริงของเครื่องยนต์คุณได้ทันที</p></div><button class="choose-model" id="chooseModel"><span class="choose-caption">CURRENT MOTORCYCLE <b>เปลี่ยนรุ่น</b></span><span class="choose-arrow">↗</span></button></div>
       </section>
       <section class="model-banner" id="modelBanner" aria-live="polite"></section>
@@ -244,7 +267,7 @@ function getModel(){return allModels().find(m=>m.id===state?.selected)||MODELS[0
 function profile(m){return m?.drive||null}
 function initial(m,previous){
  const d=profile(m),isCvt=m.type!=='chain';
- return {selected:m.id,tab:previous?.tab&&previous.tab!=='catalog'?previous.tab:'cc',engine:{bore:m.bore,stroke:m.stroke,strokeAdd:0,offsetMode:'total',cyl:m.cyl},compression:{ccSource:'modified',mode:'stock',chamber:'',gasketBore:Number((m.bore+.5).toFixed(1)),gasketThick:.5,deck:0,piston:0,target:12.5},injector:{ccSource:'modified',mode:'ve',hp:18,bsfc:.58,duty:80,count:m.cyl,density:.745,pressure:3,referencePressure:3,rpm:9500,ve:90,afr:12.8,airDensity:1.18,installed:130},cam:{valves:'2',source:'events',checkHeight:1,io:'',ic:'',eo:'',ec:'',intDuration:'',exhDuration:'',lsa:'',icl:'',advance:0,liftMode:'cam',camIntake:'',camExhaust:'',rockerIntake:'',rockerExhaust:'',lashIntake:0,lashExhaust:0,valveLiftIntake:'',valveLiftExhaust:'',diamIntake:'',diamExhaust:''},speed:{mode:isCvt?'cvt':'chain',rpm:9000,rpmNew:10500,front:d?.front??14,rear:d?.rear??36,newFront:d?.front??15,newRear:d?.rear??34,primary:d?.primary??'',gearRatio:d?.gears?.at(-1)??'',gearIndex:d?.gearIndex??(d?.gears?.length-1??-1),tire:m.tire||'80/90-17',tireManual:'',rollingFactor:100,cvtRatio:'',measuredRPM:7500,measuredSpeed:80,slip:0}};
+ return {selected:m.id,tab:previous?.tab&&previous.tab!=='catalog'?previous.tab:'cc',engine:{bore:m.bore,stroke:m.stroke,strokeAdd:0,offsetMode:'total',cyl:m.cyl},compression:{ccSource:'modified',mode:'stock',chamber:'',gasketBore:Number((m.bore+.5).toFixed(1)),gasketThick:.5,deck:0,piston:0,target:12.5},injector:{ccSource:'modified',mode:'ve',hp:18,bsfc:.58,duty:80,count:m.cyl,density:.745,pressure:3,referencePressure:3,rpm:9500,ve:90,afr:12.8,airDensity:1.18,installed:130},cam:{valves:'2',source:'events',checkHeight:1,io:'',ic:'',eo:'',ec:'',intDuration:'',exhDuration:'',lsa:'',icl:'',advance:0,liftMode:'cam',camIntake:'',camExhaust:'',rockerIntake:'',rockerExhaust:'',lashIntake:0,lashExhaust:0,valveLiftIntake:'',valveLiftExhaust:'',diamIntake:'',diamExhaust:'',fuel:'95',cooling:'air',rpmCeiling:'',staticCR:'',seatIVC:'',rodLength:'',pistonClearIntake:'',pistonClearExhaust:'',radialClearIntake:'',radialClearExhaust:'',springInstalledIntake:'',springSolidIntake:'',springInstalledExhaust:'',springSolidExhaust:'',retainerIntake:'',retainerExhaust:'',targetPtvIntake:2.0,targetPtvExhaust:2.5,targetCoil:1.5,targetRetainer:1.5},speed:{mode:isCvt?'cvt':'chain',rpm:9000,rpmNew:10500,front:d?.front??14,rear:d?.rear??36,newFront:d?.front??15,newRear:d?.rear??34,primary:d?.primary??'',gearRatio:d?.gears?.at(-1)??'',gearIndex:d?.gearIndex??(d?.gears?.length-1??-1),tire:m.tire||'80/90-17',tireManual:'',rollingFactor:100,cvtRatio:'',measuredRPM:7500,measuredSpeed:80,slip:0}};
 }
 if(!state||!allModels().some(m=>m.id===state.selected)){state=initial(MODELS[2]);}else{
  // Backfill keys when upgrading without losing saved user data.
@@ -318,12 +341,143 @@ function camTimingChart(a){if(![a.io,a.ic,a.eo,a.ec].every(Number.isFinite))retu
  const l=-300,r=300,x=t=>40+(Math.max(l,Math.min(r,t))-l)/(r-l)*510;
  const intStart=-a.io,intEnd=180+a.ic,exStart=-180-a.eo,exEnd=a.ec;
  return `<svg class="cam-chart" viewBox="0 0 600 145" role="img" aria-label="ช่วงองศาเปิดของวาล์วไอดีและไอเสีย รอบศูนย์ตายบน" xmlns="http://www.w3.org/2000/svg"><line x1="40" y1="15" x2="550" y2="15" stroke="#536071"/><line x1="${x(0)}" y1="13" x2="${x(0)}" y2="125" stroke="#b8c2d3" stroke-dasharray="4 4"/>${[-180,0,180].map(t=>`<text x="${x(t)}" y="10" fill="#a3b0c0" font-size="11" text-anchor="middle">${t===0?'TDC':t===-180?'BDC ก่อน':'BDC หลัง'}</text>`).join('')}<text x="7" y="57" fill="#bdc7d5" font-size="12">IN</text><text x="7" y="103" fill="#bdc7d5" font-size="12">EX</text><rect x="${x(intStart)}" y="39" width="${Math.max(0,x(intEnd)-x(intStart))}" height="27" rx="6" fill="#fd5069" opacity=".9"/><rect x="${x(exStart)}" y="85" width="${Math.max(0,x(exEnd)-x(exStart))}" height="27" rx="6" fill="#8ca8c9" opacity=".8"/><text x="300" y="137" text-anchor="middle" fill="#8794a6" font-size="10">องศาข้อเหวี่ยง (CRANK °) | กราฟช่วงเปิด ไม่ใช่กราฟยกวาล์วจริง</text></svg>`;}
-function renderCam(){const c=state.cam;return `${heading('04 / VALVETRAIN','Camshaft Analyzer','คำนวณองศาแคม Duration, Overlap, ICL, ECL, LSA และระยะยกวาล์ว 2V / 4V')}<div class="layout-2"><div class="stack"><div class="panel">${formTitle('VALVE EVENTS','องศาที่วัดต้องเป็นองศาข้อเหวี่ยงและใช้ความสูงตรวจเดียวกัน','01 / TIMING')}<div class="panel-subtitle">วิธีกรอกข้อมูล</div>${segment('cam.source',[['events','องศาเปิด–ปิด'],['spec','Duration + LSA + ICL']],c.source)}${c.source==='events'?`<div class="form-grid cols2">${field('ไอดีเปิด ก่อนศูนย์ตายบน IVO','cam.io',c.io,'° BTDC',{placeholder:'เช่น 16'})}${field('ไอดีปิด หลังศูนย์ตายล่าง IVC','cam.ic',c.ic,'° ABDC',{placeholder:'เช่น 55'})}${field('ไอเสียเปิด ก่อนศูนย์ตายล่าง EVO','cam.eo',c.eo,'° BBDC',{placeholder:'เช่น 52'})}${field('ไอเสียปิด หลังศูนย์ตายบน EVC','cam.ec',c.ec,'° ATDC',{placeholder:'เช่น 20'})}</div>`:`<div class="form-grid cols2">${field('Duration ไอดี','cam.intDuration',c.intDuration,'° crank')}${field('Duration ไอเสีย','cam.exhDuration',c.exhDuration,'° crank')}${field('LSA','cam.lsa',c.lsa,'° cam')}${field('ICL ก่อนปรับเฟือง','cam.icl',c.icl,'° ATDC')}</div>`}<div class="form-grid cols2" style="margin-top:16px">${field('Checking Lift ที่ใช้วัด','cam.checkHeight',c.checkHeight,'mm',{min:0})}${field('ชดเชยเฟืองแคม (+เดินหน้า / −ถอย)','cam.advance',c.advance,'° crank')}</div><p class="info-note">กรอก IVO = องศาก่อน TDC, IVC = หลัง BDC, EVO = ก่อน BDC, EVC = หลัง TDC ถ้าเหตุการณ์เกิดคนละฝั่งให้ใส่ <b>ค่าติดลบ</b> เช่น เปิดไอดี 3° หลัง TDC = −3 ช่อง IVO · ความสูงวัดที่วาล์ว 1 มม. ต่างจากวัดที่ลูกแคมหรือ 0.050″ ห้ามเปรียบเทียบตรง ๆ · ค่า ICL/ECL เป็น midpoint ขององศาเปิด–ปิด (อาจต่างจากยอดยกจริงถ้าลูกแคมไม่สมมาตร)</p><button type="button" class="action-outline" data-action="exampleCam">โหลดตัวอย่างการวัด (ไม่ใช่สเปก Honda)</button></div><div class="panel">${formTitle('VALVE TRAIN & GEOMETRY','แยกจำนวนวาล์วและคำนวณระยะยกที่ปลายวาล์ว','02 / LIFT')}<div class="panel-subtitle">จำนวนวาล์วต่อสูบ</div>${segment('cam.valves',[['2','2V (ไอดี 1 / ไอเสีย 1)'],['4','4V (ไอดี 2 / ไอเสีย 2)']],c.valves)}<div class="panel-subtitle">จุดที่วัดระยะยก</div>${segment('cam.liftMode',[['cam','ยกที่ลูกแคม'],['valve','ยกจริงที่วาล์ว']],c.liftMode)}${c.liftMode==='cam'?`<div class="form-grid cols2">${field('ยกลูกแคมไอดี','cam.camIntake',c.camIntake,'mm',{placeholder:'ค่าที่วัดจริง'})}${field('ยกลูกแคมไอเสีย','cam.camExhaust',c.camExhaust,'mm',{placeholder:'ค่าที่วัดจริง'})}${field('อัตราทดกระเดื่องไอดี','cam.rockerIntake',c.rockerIntake,':1',{placeholder:'ต้องวัดหรือทราบจริง'})}${field('อัตราทดกระเดื่องไอเสีย','cam.rockerExhaust',c.rockerExhaust,':1',{placeholder:'ต้องวัดหรือทราบจริง'})}${field('ระยะห่างวาล์วไอดี (lash)','cam.lashIntake',c.lashIntake,'mm')}${field('ระยะห่างวาล์วไอเสีย (lash)','cam.lashExhaust',c.lashExhaust,'mm')}</div>`:`<div class="form-grid cols2">${field('ระยะยกจริงไอดีที่วาล์ว','cam.valveLiftIntake',c.valveLiftIntake,'mm')}${field('ระยะยกจริงไอเสียที่วาล์ว','cam.valveLiftExhaust',c.valveLiftExhaust,'mm')}</div>`}<div class="panel-subtitle">ขนาดหน้าวาล์วที่วัด (ต่อ 1 วาล์ว)</div><div class="form-grid cols2">${field('เส้นผ่านศูนย์กลางวาล์วไอดี','cam.diamIntake',c.diamIntake,'mm',{placeholder:'เช่น 21'})}${field('เส้นผ่านศูนย์กลางวาล์วไอเสีย','cam.diamExhaust',c.diamExhaust,'mm',{placeholder:'เช่น 18'})}</div><p class="info-note">สูตรยกสุทธิประมาณ = ยกลูกแคม × อัตราทดกระเดื่อง − ระยะห่างวาล์ว · สำหรับระบบแคมกดตรงไม่มีอัตราทดให้ใส่ 1:1 <b>อย่าตั้งอัตราทด 2V หรือ 4V ตามจำนวนวาล์วอัตโนมัติ</b> เพราะขึ้นกับกระเดื่อง/ชุดขับวาล์วจริง</p></div></div><div class="stack"><div id="camResult"></div><div class="panel">${formTitle('TIMING OVERVIEW','เปิด–ปิด ณ Checking Lift ที่เลือก','03 / CHART')}<div id="camGraph"></div></div><div class="panel">${formTitle('VALVE LIFT & SIZE','การยกสัมพันธ์กับหน้าวาล์วและจำนวนวาล์ว','04 / GEOMETRY')}<div id="camValveResult"></div></div></div></div><div class="actionbar"><button class="action-outline" data-action="copy">คัดลอกผลคำนวณ</button><button class="action-outline" data-action="print">พิมพ์ / PDF</button></div>`;}
+function renderCam(){const c=state.cam;return `${heading('04 / VALVETRAIN','Camshaft Analyzer','คำนวณองศาแคม Duration, Overlap, ICL, ECL, LSA และระยะยกวาล์ว 2V / 4V')}<div class="layout-2"><div class="stack"><div class="panel">${formTitle('VALVE EVENTS','องศาที่วัดต้องเป็นองศาข้อเหวี่ยงและใช้ความสูงตรวจเดียวกัน','01 / TIMING')}<div class="panel-subtitle">วิธีกรอกข้อมูล</div>${segment('cam.source',[['events','องศาเปิด–ปิด'],['spec','Duration + LSA + ICL']],c.source)}${c.source==='events'?`<div class="form-grid cols2">${field('ไอดีเปิด ก่อนศูนย์ตายบน IVO','cam.io',c.io,'° BTDC',{placeholder:'เช่น 16'})}${field('ไอดีปิด หลังศูนย์ตายล่าง IVC','cam.ic',c.ic,'° ABDC',{placeholder:'เช่น 55'})}${field('ไอเสียเปิด ก่อนศูนย์ตายล่าง EVO','cam.eo',c.eo,'° BBDC',{placeholder:'เช่น 52'})}${field('ไอเสียปิด หลังศูนย์ตายบน EVC','cam.ec',c.ec,'° ATDC',{placeholder:'เช่น 20'})}</div>`:`<div class="form-grid cols2">${field('Duration ไอดี','cam.intDuration',c.intDuration,'° crank')}${field('Duration ไอเสีย','cam.exhDuration',c.exhDuration,'° crank')}${field('LSA','cam.lsa',c.lsa,'° cam')}${field('ICL ก่อนปรับเฟือง','cam.icl',c.icl,'° ATDC')}</div>`}<div class="form-grid cols2" style="margin-top:16px">${field('Checking Lift ที่ใช้วัด','cam.checkHeight',c.checkHeight,'mm',{min:0})}${field('ชดเชยเฟืองแคม (+เดินหน้า / −ถอย)','cam.advance',c.advance,'° crank')}</div><p class="info-note">กรอก IVO = องศาก่อน TDC, IVC = หลัง BDC, EVO = ก่อน BDC, EVC = หลัง TDC ถ้าเหตุการณ์เกิดคนละฝั่งให้ใส่ <b>ค่าติดลบ</b> เช่น เปิดไอดี 3° หลัง TDC = −3 ช่อง IVO · ความสูงวัดที่วาล์ว 1 มม. ต่างจากวัดที่ลูกแคมหรือ 0.050″ ห้ามเปรียบเทียบตรง ๆ · ค่า ICL/ECL เป็น midpoint ขององศาเปิด–ปิด (อาจต่างจากยอดยกจริงถ้าลูกแคมไม่สมมาตร)</p><button type="button" class="action-outline" data-action="exampleCam">โหลดตัวอย่างการวัด (ไม่ใช่สเปก Honda)</button></div><div class="panel">${formTitle('VALVE TRAIN & GEOMETRY','แยกจำนวนวาล์วและคำนวณระยะยกที่ปลายวาล์ว','02 / LIFT')}<div class="panel-subtitle">จำนวนวาล์วต่อสูบ</div>${segment('cam.valves',[['2','2V (ไอดี 1 / ไอเสีย 1)'],['4','4V (ไอดี 2 / ไอเสีย 2)']],c.valves)}<div class="panel-subtitle">จุดที่วัดระยะยก</div>${segment('cam.liftMode',[['cam','ยกที่ลูกแคม'],['valve','ยกจริงที่วาล์ว']],c.liftMode)}${c.liftMode==='cam'?`<div class="form-grid cols2">${field('ยกลูกแคมไอดี','cam.camIntake',c.camIntake,'mm',{placeholder:'ค่าที่วัดจริง'})}${field('ยกลูกแคมไอเสีย','cam.camExhaust',c.camExhaust,'mm',{placeholder:'ค่าที่วัดจริง'})}${field('อัตราทดกระเดื่องไอดี','cam.rockerIntake',c.rockerIntake,':1',{placeholder:'ต้องวัดหรือทราบจริง'})}${field('อัตราทดกระเดื่องไอเสีย','cam.rockerExhaust',c.rockerExhaust,':1',{placeholder:'ต้องวัดหรือทราบจริง'})}${field('ระยะห่างวาล์วไอดี (lash)','cam.lashIntake',c.lashIntake,'mm')}${field('ระยะห่างวาล์วไอเสีย (lash)','cam.lashExhaust',c.lashExhaust,'mm')}</div>`:`<div class="form-grid cols2">${field('ระยะยกจริงไอดีที่วาล์ว','cam.valveLiftIntake',c.valveLiftIntake,'mm')}${field('ระยะยกจริงไอเสียที่วาล์ว','cam.valveLiftExhaust',c.valveLiftExhaust,'mm')}</div>`}<div class="panel-subtitle">ขนาดหน้าวาล์วที่วัด (ต่อ 1 วาล์ว)</div><div class="form-grid cols2">${field('เส้นผ่านศูนย์กลางวาล์วไอดี','cam.diamIntake',c.diamIntake,'mm',{placeholder:'เช่น 21'})}${field('เส้นผ่านศูนย์กลางวาล์วไอเสีย','cam.diamExhaust',c.diamExhaust,'mm',{placeholder:'เช่น 18'})}</div><p class="info-note">สูตรยกสุทธิประมาณ = ยกลูกแคม × อัตราทดกระเดื่อง − ระยะห่างวาล์ว · สำหรับระบบแคมกดตรงไม่มีอัตราทดให้ใส่ 1:1 <b>อย่าตั้งอัตราทด 2V หรือ 4V ตามจำนวนวาล์วอัตโนมัติ</b> เพราะขึ้นกับกระเดื่อง/ชุดขับวาล์วจริง</p></div></div><div class="stack"><div id="camResult"></div><div class="panel">${formTitle('TIMING OVERVIEW','เปิด–ปิด ณ Checking Lift ที่เลือก','03 / CHART')}<div id="camGraph"></div></div><div class="panel">${formTitle('VALVE LIFT & SIZE','การยกสัมพันธ์กับหน้าวาล์วและจำนวนวาล์ว','04 / GEOMETRY')}<div id="camValveResult"></div></div></div></div><div class="layout-2 cam-added"><div class="stack">
+<div class="panel">${formTitle('POWERBAND / FUEL','ตัวช่วยตีความลักษณะแคมและกำลังอัด','05 / TUNING')}
+<div class="panel-subtitle">น้ำมันที่ใช้และระบบหล่อเย็น (เครื่องเบนซิน NA)</div>
+${segment('cam.fuel',[['91','RON 91'],['95','RON 95'],['e20','E20'],['98','RON 98+']],c.fuel||'95')}
+${segment('cam.cooling',[['air','ระบายความร้อนอากาศ'],['liquid','ระบายความร้อนน้ำ']],c.cooling||'air')}
+<div class="form-grid cols2">
+${field('รอบสูงสุดที่ยืนยันกับเครื่องจริง','cam.rpmCeiling',c.rpmCeiling,'RPM',{placeholder:'เช่น 11000'})}
+${field('กำลังอัดจริงที่วัด (ทางเลือก)','cam.staticCR',c.staticCR,':1',{placeholder:'เว้นว่าง = อิงหน้า CR'})}
+${field('ไอดีปิดที่วาล์วนั่งบ่า (Seat IVC)','cam.seatIVC',c.seatIVC,'° ABDC',{placeholder:'ไม่ใช่ IVC ที่ 1 mm'})}
+${field('ก้านสูบยาวศูนย์ถึงศูนย์','cam.rodLength',c.rodLength,'mm',{placeholder:'จำเป็นสำหรับ DCR'})}
+</div><p class="info-note">ค่า RPM นี้คือ <b>ขีดจำกัดที่ผู้ใช้ตรวจสอบแล้ว</b> ไม่ใช่ค่าที่แอปสามารถรับรองจากองศาแคม · ค่า Dynamic CR ต้องมี IVC ตอนวาล์วนั่งบ่าและความยาวก้านสูบ ไม่ใช่ IVC ที่ยก 1 มม.</p>
+</div>
+<div class="panel">${formTitle('VALVE CLEARANCE TEST','กรอกค่าช่องว่างที่วัดจริง ไม่อนุมานจากระยะยกสูงสุด','06 / SAFETY')}
+<div class="panel-subtitle">ระยะห่างวาล์วกับลูกสูบ (ค่าต่ำสุดบริเวณ TDC โอเวอร์แลป)</div>
+<div class="form-grid cols2">${field('ไอดี: piston-to-valve ต่ำสุด','cam.pistonClearIntake',c.pistonClearIntake,'mm',{placeholder:'วัดจริง'})}${field('ไอเสีย: piston-to-valve ต่ำสุด','cam.pistonClearExhaust',c.pistonClearExhaust,'mm',{placeholder:'วัดจริง'})}${field('หลบขอบวาล์วไอดี (radial)','cam.radialClearIntake',c.radialClearIntake,'mm',{placeholder:'วัดจริง'})}${field('หลบขอบวาล์วไอเสีย (radial)','cam.radialClearExhaust',c.radialClearExhaust,'mm',{placeholder:'วัดจริง'})}</div>
+<div class="panel-subtitle">ระยะสปริงก่อน Coil Bind (วัดที่ความสูงติดตั้ง / สปริงชน)</div>
+<div class="form-grid cols2">${field('ความสูงสปริงติดตั้ง ไอดี','cam.springInstalledIntake',c.springInstalledIntake,'mm')}${field('ความสูงสปริงชน ไอดี','cam.springSolidIntake',c.springSolidIntake,'mm')}${field('ความสูงสปริงติดตั้ง ไอเสีย','cam.springInstalledExhaust',c.springInstalledExhaust,'mm')}${field('ความสูงสปริงชน ไอเสีย','cam.springSolidExhaust',c.springSolidExhaust,'mm')}${field('Retainer-to-Seal ไอดี เมื่อปิด','cam.retainerIntake',c.retainerIntake,'mm')}${field('Retainer-to-Seal ไอเสีย เมื่อปิด','cam.retainerExhaust',c.retainerExhaust,'mm')}</div>
+<div class="panel-subtitle">เกณฑ์ขั้นต่ำที่ใช้เปรียบเทียบ — ปรับตามคู่มือแคม/สปริงจริง</div>
+<div class="form-grid cols2">${field('P–V ขั้นต่ำไอดี','cam.targetPtvIntake',c.targetPtvIntake,'mm')}${field('P–V ขั้นต่ำไอเสีย','cam.targetPtvExhaust',c.targetPtvExhaust,'mm')}${field('ช่องว่างหลังสปริงอัดสุดขั้นต่ำ','cam.targetCoil',c.targetCoil,'mm')}${field('Retainer เหลือจากยกสูงสุดขั้นต่ำ','cam.targetRetainer',c.targetRetainer,'mm')}</div>
+<p class="info-note">เกณฑ์เริ่มต้น P–V 2.0/2.5 มม. และระยะสปริง/รีเทนเนอร์ 1.5 มม. เป็นแนวอ้างอิงทั่วไป ไม่ใช่สเปก Honda หรือใบรับรองความปลอดภัยเครื่อง 2V/4V ต้องตรวจวาล์วทุกตัวในฝาจริง ระยะด้านข้าง ลูกสูบ ชุดกระเดื่อง และ Valve Float</p>
+</div></div>
+<div class="stack">
+<div class="panel">${formTitle('CAM BEHAVIOR','เน้นแรงบิด / รอบปลาย / ช่วงรอบโดยประมาณ','07 / ANALYSIS')}<div id="camAdvisory"></div></div>
+<div class="panel">${formTitle('VALVE LIFT TRACE','กราฟยกวาล์วจำลองตามองศาข้อเหวี่ยง','08 / GRAPHS')}<div id="camLiftTrace"></div><div id="camPowerTrace"></div></div>
+<div class="panel">${formTitle('MEASURED SAFETY CHECK','ประเมินค่าหลังกรอกผลการวัดจริง','09 / CHECKLIST')}<div id="camClearanceResult"></div></div>
+</div></div><div class="actionbar"><button class="action-outline" data-action="copy">คัดลอกผลคำนวณ</button><button class="action-outline" data-action="print">พิมพ์ / PDF</button></div>`;}
 function updateCam(){const a=camCalc(),c=state.cam,check=Number.isFinite(safeNum(c.checkHeight))?tidy(safeNum(c.checkHeight),3)+' mm':'ไม่ระบุ';const shown=n=>fmt(n,1)+'°';
  $('#camResult').innerHTML=`<div class="result-hero"><div class="result-cap">CAM TIMING / ${a.totalValves} VALVES / CYL</div><div class="big-result">${fmt(a.overlap,1)}<span>° overlap</span></div><div class="result-tag neutral">ณ Checking Lift ${check} · ค่า ${fmt(a.advance,1)}° ปรับเฟืองแคม</div><div class="metric-grid cam-metrics"><div class="metric-box"><strong>${shown(a.di)}</strong><span>Intake Duration</span></div><div class="metric-box"><strong>${shown(a.de)}</strong><span>Exhaust Duration</span></div><div class="metric-box"><strong>${shown(a.icl)}</strong><span>ICL · ATDC</span></div><div class="metric-box"><strong>${shown(a.ecl)}</strong><span>ECL · BTDC</span></div><div class="metric-box"><strong>${shown(a.lsa)}</strong><span>LSA · องศาแคม</span></div><div class="metric-box"><strong>${shown(a.phase)}</strong><span>Intake advance จาก Straight-up</span></div></div><p class="info-note">Overlap ติดลบ = ช่วงที่วาล์วทั้งสองยังปิด ณ ระยะตรวจเดียวกัน ไม่ใช่การชนวาล์ว · ICL/ECL ที่ได้เป็นค่าประเมินจากจุดกึ่งกลางเหตุการณ์</p></div>`;
  $('#camGraph').innerHTML=`${camTimingChart(a)}<table class="data-table"><thead><tr><th>เหตุการณ์</th><th>องศา</th></tr></thead><tbody><tr><td>ไอดีเปิด (IVO) · BTDC (+)</td><td>${shown(a.io)}</td></tr><tr><td>ไอดีปิด (IVC) · ABDC (+)</td><td>${shown(a.ic)}</td></tr><tr><td>ไอเสียเปิด (EVO) · BBDC (+)</td><td>${shown(a.eo)}</td></tr><tr><td>ไอเสียปิด (EVC) · ATDC (+)</td><td>${shown(a.ec)}</td></tr></tbody></table><p class="muted-line">+ เดินหน้าองศาแคม ทำให้เปิดและปิดเร็วขึ้น (องศาข้อเหวี่ยง); ค่า Duration และ LSA ไม่เปลี่ยนจากการหมุนเฟือง</p>`;
  const line=(name,d)=>`<div class="valve-stat"><div class="valve-side">${name}<small>${a.perSide} วาล์ว / สูบ</small></div><div class="valve-big">${fmt(d.lift,2)}<small> mm lift</small></div><div class="valve-meter"><div class="valve-meter-fill" style="width:${Number.isFinite(d.liftToDia)?clamp(d.liftToDia,0,40)*2.5:0}%"></div></div><div class="valve-sub">วาล์ว Ø ${fmt(d.diameter,1)} mm · ยก / เส้นผ่านศูนย์กลาง ${fmt(d.liftToDia,1)}%<br>ม่านวาล์วเรขาคณิตรวม ${fmt(d.curtain,0)} mm² · พื้นที่หน้าวาล์วรวม ${fmt(d.face,0)} mm²</div></div>`;
- $('#camValveResult').innerHTML=`${line('INTAKE / ไอดี',a.intake)}${line('EXHAUST / ไอเสีย',a.exhaust)}<div class="warning-box">ค่า “ม่านวาล์ว” = π × เส้นผ่านศูนย์กลาง × ระยะยก × จำนวนวาล์ว เป็นเพียงพื้นที่ทรงเรขาคณิต ไม่ใช่ CFM จริง และไม่บอกว่าวาล์วชนลูกสูบหรือไม่ ต้องวัด Piston-to-Valve Clearance จริง รวมถึงตรวจสปริงยัน / ปลอกไกด์ / วาล์วชนกัน</div>`;}
+ $('#camValveResult').innerHTML=`${line('INTAKE / ไอดี',a.intake)}${line('EXHAUST / ไอเสีย',a.exhaust)}<div class="warning-box">ค่า “ม่านวาล์ว” = π × เส้นผ่านศูนย์กลาง × ระยะยก × จำนวนวาล์ว เป็นเพียงพื้นที่ทรงเรขาคณิต ไม่ใช่ CFM จริง และไม่บอกว่าวาล์วชนลูกสูบหรือไม่ ต้องวัด Piston-to-Valve Clearance จริง รวมถึงตรวจสปริงยัน / ปลอกไกด์ / วาล์วชนกัน</div>`; if($('#camAdvisory'))updateCamAdvisor();
+}
+
+// V1.4: advisory heuristics only: RPM/torque curves are NOT measured engine power.
+function camAdvisoryCalc(){
+ const a=camCalc(),c=state.cam,o=computedEngine(),h=safeNum(c.checkHeight);
+ const oneMM=Number.isFinite(h)&&Math.abs(h-1)<=0.08;
+ const canRate=oneMM&&Number.isFinite(a.di)&&a.di>90&&a.di<340&&Number.isFinite(a.ic)&&a.ic>-40&&a.ic<145;
+ let stage=NaN;
+ if(canRate){stage=a.di<195?0:a.di<220?1:a.di<242?2:a.di<262?3:4; if(a.ic>=78&&stage<4)stage=Math.min(4,stage+1);}
+ const names=['แคมย่านต้น / ใช้งาน','แคมแรงบิดต้น–กลาง','แคมสมดุลกลาง–ปลาย','แคมรอบกลาง–สูง','แคมรอบจัด / เน้นปลาย'];
+ const notes=['ระยะเปิดสั้นกว่าเน้นอัดไอดีช่วงรอบต่ำ มีแนวโน้มเดินเบาเรียบ','ให้แรงบิดย่านใช้งานเป็นหลักเมื่อเครื่องและท่อสัมพันธ์กัน','เริ่มแลกแรงบิดต่ำกับการไหลที่รอบสูง ต้องดูฝา/ท่อ/เรือนร่วม','มุ่งอัตราการไหลช่วงรอบสูง รอบต้นอาจอ่อนและไวต่ออัตราทด','แนวโน้มย่านรอบสูง ต้องตรวจสปริง วาล์วลอย และทางไหลอย่างละเอียด'];
+ const ceiling=safeNum(c.rpmCeiling),hasCeiling=valid(ceiling,900,30000);
+ const bands=[[.22,.66],[.27,.74],[.35,.83],[.45,.93],[.54,1.0]];
+ const band=Number.isFinite(stage)&&hasCeiling?bands[stage].map(x=>Math.round(ceiling*x/100)*100):null;
+ const stroke=o.s,pistonSpeed=hasCeiling&&valid(stroke,0,300)?2*(stroke/1000)*ceiling/60:NaN;
+ const fuel=c.fuel||'95',cool=c.cooling||'air';
+ const ranges={'91':[9.2,10.3],'95':[9.8,11.1],'e20':[10.2,11.5],'98':[10.4,11.9]};
+ const [fl,fh]=ranges[fuel]||ranges['95'];const adj=cool==='liquid'?0:-.3;
+ const crGuide=[fl+adj,fh+adj];
+ const override=safeNum(c.staticCR),existing=compressionCalc();
+ const staticCR=valid(override,1,30)?override:existing.cr;
+ // Dynamic compression from *seat-closing* crank angle, not 1mm events.
+ const seatIVC=safeNum(c.seatIVC),rod=safeNum(c.rodLength),r=stroke/2;
+ let dcr=NaN,effectiveStroke=NaN;
+ if(valid(seatIVC,0,120)&&valid(rod,r,300)&&valid(stroke,0,300)&&valid(staticCR,1,30)){
+  const theta=(180+seatIVC)*Math.PI/180;
+  const y=r*(1-Math.cos(theta))+(rod-Math.sqrt(Math.max(0,rod*rod-r*r*Math.sin(theta)*Math.sin(theta))));
+  effectiveStroke=y;dcr=1+(staticCR-1)*y/stroke;
+ }
+ function liftAdvice(d){if(!valid(d.diameter,0,100)||!Number.isFinite(d.lift))return 'ยังไม่ทราบการยกหรือขนาดหน้าวาล์ว';let ratio=d.lift/d.diameter;return ratio<.18?'ยกค่อนข้างน้อยเทียบ Ø; อาจจำกัดพื้นที่ม่านวาล์ว':ratio<.30?'อยู่ในช่วงยก/เส้นผ่านศูนย์กลางที่มักเริ่มดูข้อมูล CFM เพิ่ม':'ยกค่อนข้างสูงเทียบ Ø; ตรวจว่าฝาสูบยังไหลเพิ่มและชุดวาล์วรับได้';}
+ return {a,stage,name:Number.isFinite(stage)?names[stage]:'ข้อมูลยังไม่เพียงพอ',note:Number.isFinite(stage)?notes[stage]:'การจัดกลุ่มต้องมี Duration ที่วัด ณ ระยะยกวาล์ว 1.00 มม.',oneMM,band,ceiling,pistonSpeed,crGuide,staticCR,dcr,effectiveStroke,stroke,seatIVC,rod,liftInt:liftAdvice(a.intake),liftEx:liftAdvice(a.exhaust)};
+}
+function liftProfile(a,part,theta,h){
+ const d=part==='in'?a.intake:a.exhaust,L=d.lift;
+ const open=part==='in'?-a.io:-180-a.eo,close=part==='in'?180+a.ic:a.ec;
+ if(!Number.isFinite(L)||!Number.isFinite(open)||!Number.isFinite(close)||!(L>h)||!(h>0)||!(close>open))return NaN;
+ // sin² is a synthetic symmetrical lobe; solve seat opening angle so given event is at checking lift h.
+ const f=Math.asin(Math.sqrt(h/L))/Math.PI,denom=1-2*f;if(denom<.1)return NaN;
+ const duration=(close-open)/denom,start=open-duration*f,end=start+duration;
+ if(theta<=start||theta>=end)return 0;
+ return L*Math.sin(Math.PI*(theta-start)/duration)**2;
+}
+function camLiftChart(a){
+ const h=safeNum(state.cam.checkHeight),v1=a.intake.lift,v2=a.exhaust.lift;
+ if(![a.io,a.ic,a.eo,a.ec,v1,v2,h].every(Number.isFinite)||v1<=h||v2<=h||h<=0)return '<p class="info-note">กรอกองศาเปิด–ปิด และระยะยกวาล์วจริงที่มากกว่า Checking Lift ก่อนจึงจะแสดงกราฟยกวาล์วจำลอง</p>';
+ const W=600,H=262,L=48,R=13,T=19,B=37,maxY=Math.max(v1,v2)*1.1;
+ const px=t=>L+(t+300)/600*(W-L-R),py=t=>H-B-t/maxY*(H-T-B);
+ const path=part=>{let pts=[];for(let t=-300;t<=300;t+=2){const v=liftProfile(a,part,t,h);if(!Number.isFinite(v))return null;pts.push(`${pts.length?'L':'M'}${px(t).toFixed(1)} ${py(v).toFixed(1)}`);}return pts.join(' ')};
+ const inlet=path('in'),outlet=path('ex');if(!inlet||!outlet)return '<p class="info-note">องศา/ความสูงตรวจไม่สอดคล้องกับกราฟจำลอง ตรวจสอบข้อมูล</p>';
+ const ticks=[-270,-180,-90,0,90,180,270].map(t=>`<line x1="${px(t)}" x2="${px(t)}" y1="${T}" y2="${H-B}" stroke="rgba(156,173,194,.18)"/><text x="${px(t)}" y="${H-16}" text-anchor="middle" fill="#8897a8" font-size="11">${t}</text>`).join('');
+ const hz=[0,.25,.5,.75,1].map(n=>`<line x1="${L}" y1="${py(maxY*n)}" x2="${W-R}" y2="${py(maxY*n)}" stroke="rgba(156,173,194,.13)"/><text x="${L-7}" y="${py(maxY*n)+4}" text-anchor="end" fill="#8996a9" font-size="10">${(maxY*n).toFixed(1)}</text>`).join('');
+ return `<svg class="cam-chart-real" viewBox="0 0 ${W} ${H}" role="img" aria-label="กราฟยกวาล์วไอดีสีแดงและไอเสียสีฟ้า ตามองศาข้อเหวี่ยง จำลองไม่ใช่โปรไฟล์แคมจริง" xmlns="http://www.w3.org/2000/svg">${ticks}${hz}<line x1="${px(0)}" x2="${px(0)}" y1="${T}" y2="${H-B}" stroke="#c3ccd6" stroke-width="1.3" stroke-dasharray="4 3"/><path d="${outlet}" stroke="#78acd6" fill="none" stroke-width="2.9" stroke-linejoin="round"/><path d="${inlet}" stroke="#ff5a76" fill="none" stroke-width="3.3" stroke-linejoin="round"/><text x="${L}" y="12" fill="#f49fac" font-size="11">ไอดี / IN</text><text x="${L+95}" y="12" fill="#96c6e9" font-size="11">ไอเสีย / EX</text><text x="${W-13}" y="${H-3}" text-anchor="end" fill="#8e9bac" font-size="11">องศาข้อเหวี่ยง / Crank °</text><text transform="translate(12,124) rotate(-90)" fill="#9aa8bb" font-size="11">Valve Lift mm</text></svg><p class="cam-advisor-note">กราฟนี้เป็นเส้น <b>sin² จำลองแบบสมมาตร</b> ปรับให้ผ่านจุด Checking Lift ที่กรอก ไม่ใช่เส้นลิฟต์จริงของลูกแคม ไม่สามารถใช้แทนการวัดทุก 2–5° เพื่อตัดสินการชนลูกสูบ/วาล์ว หรือคำนวณ CFM</p>`;
+}
+function camPowerChart(adv){
+ if(!adv.band)return '<p class="info-note">กรอกรอบสูงสุดที่ตรวจสอบจากเครื่องจริงเพื่อวาดกราฟแนวโน้มย่านรอบแบบสัดส่วน (ไม่ใช่กราฟแรงม้า/แรงบิดจากไดโน)</p>';
+ const stage=adv.stage,top=adv.ceiling,W=600,H=220,L=44,R=12,T=12,B=33;
+ const torquePeak=[.43,.51,.61,.70,.78][stage],sig=[.26,.27,.26,.22,.20][stage];
+ const pt=[],pp=[];
+ for(let i=0;i<=80;i++){const u=i/80,q=Math.exp(-.5*Math.pow((u-torquePeak)/sig,2)),tor=q*100,pow=u*q;pt.push({u,tor,pow});}
+ const maxPow=Math.max(...pt.map(p=>p.pow));for(const p of pt)p.pow=100*p.pow/maxPow;
+ const px=u=>L+u*(W-L-R),py=y=>H-B-y/100*(H-T-B);
+ const create=k=>pt.map((p,i)=>`${i?'L':'M'}${px(p.u).toFixed(1)} ${py(p[k]).toFixed(1)}`).join(' ');
+ const ticks=[0,.25,.5,.75,1].map(t=>`<line x1="${px(t)}" y1="${T}" x2="${px(t)}" y2="${H-B}" stroke="#303947"/><text x="${px(t)}" y="${H-11}" text-anchor="middle" fill="#8b9aac" font-size="10">${Math.round(top*t).toLocaleString()}</text>`).join('');
+ const hlines=[0,25,50,75,100].map(v=>`<line x1="${L}" y1="${py(v)}" x2="${W-R}" y2="${py(v)}" stroke="#303947"/><text x="${L-6}" y="${py(v)+4}" text-anchor="end" fill="#8b9aac" font-size="10">${v}</text>`).join('');
+ return `<div class="panel-subtitle">กราฟแนวโน้มสัมพัทธ์ ไม่ใช่ผลแรงม้า/แรงบิดจริง</div><svg class="cam-chart-real" viewBox="0 0 ${W} ${H}" role="img" aria-label="เส้นประเมินเชิงภาพแนวโน้มแรงบิดและกำลังตามรอบ ไม่ใช่ผลทดสอบเครื่องยนต์" xmlns="http://www.w3.org/2000/svg">${ticks}${hlines}<path d="${create('tor')}" stroke="#ff6575" stroke-width="3" fill="none"/><path d="${create('pow')}" stroke="#8bc9e2" stroke-width="3" fill="none"/><text x="${L}" y="${H-2}" fill="#ff8293" font-size="11">Torque Index</text><text x="${L+118}" y="${H-2}" fill="#91d1e9" font-size="11">Power Index</text><text x="${W-R}" y="${H-2}" text-anchor="end" fill="#9baac0" font-size="11">RPM</text></svg><p class="cam-advisor-note">เส้นนี้เป็นดัชนีจำลองให้เห็นแนวคิดย่านรอบเท่านั้น ไม่มีข้อมูล VE/CFM/ไดโน/ท่อ/ไอดี/ไฟจุดระเบิด จึง <b>ไม่ใช่คำทำนายกำลังจริง</b> และใช้ยืนยันรอบสูงสุดที่เครื่องรับได้ไม่ได้</p>`;
+}
+function camClearanceCalc(){
+ const c=state.cam,a=camCalc(),tIn=safeNum(c.targetPtvIntake),tEx=safeNum(c.targetPtvExhaust),tc=safeNum(c.targetCoil),tr=safeNum(c.targetRetainer);
+ const specsValid=[tIn,tEx,tc,tr].every(x=>Number.isFinite(x)&&x>=0&&x<=20);
+ const rows=[];
+ function check(name,value,min,detail){let status='missing';if(Number.isFinite(value)&&value>=0){status=!Number.isFinite(min)?'unknown':value>=min?'pass':'fail'}rows.push({name,value,min,detail,status});}
+ check('Piston–Valve ไอดี',safeNum(c.pistonClearIntake),specsValid?tIn:NaN,'ต่ำสุดที่วัดจริงใกล้ TDC');
+ check('Piston–Valve ไอเสีย',safeNum(c.pistonClearExhaust),specsValid?tEx:NaN,'ต่ำสุดที่วัดจริงใกล้ TDC');
+ for(const side of ['Intake','Exhaust']){
+  const name=side==='Intake'?'ไอดี':'ไอเสีย',lift=a[side==='Intake'?'intake':'exhaust'].lift,installed=safeNum(c['springInstalled'+side]),solid=safeNum(c['springSolid'+side]);
+  const gap=Number.isFinite(installed)&&Number.isFinite(solid)&&Number.isFinite(lift)?installed-solid-lift:NaN;
+  check('สปริงเหลือหลังยก '+name,gap,specsValid?tc:NaN,'Installed − Solid − Valve Lift');
+  const ret=safeNum(c['retainer'+side]);check('รีเทนเนอร์เหลือหลังยก '+name,Number.isFinite(ret)&&Number.isFinite(lift)?ret-lift:NaN,specsValid?tr:NaN,'ระยะจากรีเทนเนอร์ถึงซีล ณ วาล์วปิด ลบระยะยก');
+ }
+ // Radial minimum is not auto-assumed: needs engine/piston manufacturer's target.
+ const radial=[safeNum(c.radialClearIntake),safeNum(c.radialClearExhaust)];
+ const failed=rows.some(r=>r.status==='fail'),complete=rows.every(r=>r.status==='pass'),summary=failed?'fail':complete?'conditional':'unknown';
+ return {rows,radial,state:summary,specsValid};
+}
+function updateCamAdvisor(){
+ const p=camAdvisoryCalc(),a=p.a,c=state.cam;
+ const band=p.band?`${fmt(p.band[0],0)} – ${fmt(p.band[1],0)} RPM`:'ต้องระบุ RPM เพดานที่ยืนยันจริง';
+ const confidence=p.oneMM?'เกณฑ์เปรียบเทียบที่ 1 mm':'ไม่ใช่ Checking Lift ที่ 1 mm';
+ const suspicion=Number.isFinite(a.overlap)&&a.overlap>0?`Overlap ${fmt(a.overlap,1)}° @ ${fmt(safeNum(c.checkHeight),2)} mm; มีแนวโน้มเพิ่มการคายไอดีที่รอบต่ำหากระบบไม่เหมาะ`:'Overlap ที่จุดตรวจไม่เป็นบวก ไม่ได้แปลว่าวาล์วไม่เปิดซ้อนที่ Seat';
+ const crKnown=Number.isFinite(p.staticCR)&&p.staticCR>1;
+ const compareCr=crKnown?`CR ที่ใส่/คำนวณ ${fmt(p.staticCR,2)}:1 — ${p.staticCR>p.crGuide[1]?'สูงกว่ากรอบเริ่มต้นตัวอย่าง ต้องตรวจการน็อกและการจูน':p.staticCR<p.crGuide[0]?'ต่ำกว่ากรอบเริ่มต้นตัวอย่าง อาจเสียแรงบิด':'อยู่ภายในกรอบอ้างอิงตัวอย่าง แต่ยังไม่ยืนยันปลอดภัย'}`:'ไม่มีค่า Static CR ที่ยืนยันได้';
+ $('#camAdvisory').innerHTML=`<div class="advisor-status ${p.stage>=3?'warn':''}"><strong>${escapeHTML(p.name)}</strong>${escapeHTML(p.note)}<p class="cam-advisor-note">${escapeHTML(confidence)} · ${escapeHTML(suspicion)}</p></div>
+ <div class="advisor-stat-grid"><div class="advisor-stat"><div class="lab">ลักษณะทางรอบจากข้อมูลแคม</div><div class="number">${p.stage>=0&&p.stage<=4?p.stage>=3?'เน้นรอบสูง':p.stage===2?'กลาง–ปลาย':'ต้น–กลาง':'ต้องวัดเพิ่ม'}</div><div class="minor">ตีความจาก Duration ที่ยกวาล์ว 1 mm และ IVC เท่านั้น</div></div>
+ <div class="advisor-stat"><div class="lab">ช่วงรอบเปรียบเทียบจากเพดาน RPM ที่กรอก</div><div class="number" style="font-size:15px">${band}</div><div class="minor">กรอบสมมติ ไม่ใช่รอบที่แคม/เครื่องรับรอง</div></div>
+ <div class="advisor-stat"><div class="lab">Mean Piston Speed @ เพดานที่ใส่</div><div class="number">${fmt(p.pistonSpeed,1)} <small>m/s</small></div><div class="minor">บอกความเร็วลูกสูบเฉลี่ย ไม่บอกว่าสปริง/ก้าน/ข้อเหวี่ยงปลอดภัย</div></div>
+ <div class="advisor-stat"><div class="lab">ตัวอย่างกรอบ Static CR / ${escapeHTML(c.fuel)} / ${c.cooling==='air'?'อากาศ':'น้ำ'}</div><div class="number">${fmt(p.crGuide[0],1)}–${fmt(p.crGuide[1],1)}:1</div><div class="minor">เป็นตัวเลขประกอบการเริ่มจูนเครื่อง NA ไม่ใช่คำรับรองว่าจะใช้น้ำมันนี้ได้</div></div></div>
+ <div class="advisor-status"><strong>กำลังอัดที่ควรพิจารณา</strong>${escapeHTML(compareCr)}<p class="cam-advisor-note">แคม IVC ปิดช้าอาจช่วยลดแรงดันอัดที่รอบต่ำ แต่จะเพิ่ม Static CR ได้เท่าไร ต้องทราบ Seat IVC, Squish, ห้องเผาไหม้, เชื้อเพลิง, อุณหภูมิ, องศาไฟ และการน็อกจริง ไม่ควรเพิ่มกำลังอัดจาก IVC ที่ 1 mm โดยตรง</p>${Number.isFinite(p.dcr)?`<div class="cam-tag">Geometric DCR ~${fmt(p.dcr,2)}:1</div><p class="cam-advisor-note">คำนวณจาก Seat IVC ${fmt(p.seatIVC,1)}° ABDC + ก้าน ${fmt(p.rod,1)} mm; เป็นเรขาคณิต ไม่ใช่แรงดันอัดจริง/PSI</p>`:'<p class="cam-advisor-note">กรอก Seat IVC + ความยาวก้านสูบ + Static CR จริง หากต้องการค่า Geometric DCR</p>'}</div>
+ <div class="advisor-status"><strong>ระยะยกสัมพันธ์กับขนาดวาล์ว</strong>ไอดี: ${escapeHTML(p.liftInt)}<br>ไอเสีย: ${escapeHTML(p.liftEx)}<p class="cam-advisor-note">2V/4V ไม่ได้กำหนดสเปกยกโดยตัวมันเอง พื้นที่ไหลจริงขึ้นกับทรงบ่า ก้านวาล์ว พอร์ต และกราฟ CFM ที่ระยะยกต่าง ๆ ห้ามสรุปว่าเพียงพอจากระยะยก/Ø อย่างเดียว</p></div>`;
+ $('#camLiftTrace').innerHTML=camLiftChart(a);
+ $('#camPowerTrace').innerHTML=camPowerChart(p);
+ const safety=camClearanceCalc();
+ const mark={pass:['ผ่านค่าที่ตั้ง','ok'],fail:['ต่ำกว่าค่าเกณฑ์','danger'],missing:['ยังไม่วัด','warn'],unknown:['เกณฑ์ไม่ถูกต้อง','danger']};
+ const overall=safety.state==='fail'?['พบค่าต่ำกว่าเกณฑ์ที่ตั้ง','danger']:safety.state==='conditional'?['ค่าที่วัดผ่านเกณฑ์ที่ตั้งไว้ทุกช่อง แต่ยังไม่รับรองว่าปลอดภัย','ok']:['ยังไม่สามารถสรุปความปลอดภัยได้','warn'];
+ $('#camClearanceResult').innerHTML=`<div class="advisor-status ${overall[1]}"><strong>${overall[0]}</strong>ต้องวัดค่าจริงที่ตำแหน่งองศาแคมและชุดปะเก็นที่ใช้ และตรวจการชนวาล์ว–วาล์ว/ด้านข้างด้วย</div>${safety.rows.map(r=>`<div class="cam-check-row"><div class="left">${r.name}<small>${r.detail} · เกณฑ์ ≥ ${fmt(r.min,2)} มม.</small></div><div class="right ${mark[r.status][1]}">${Number.isFinite(r.value)?fmt(r.value,2)+' mm':'—'}<small style="display:block">${mark[r.status][0]}</small></div></div>`).join('')}<p class="cam-advisor-note">ระยะหลบขอบวาล์วด้านข้างที่กรอก: ไอดี ${fmt(safety.radial[0],2)} มม. / ไอเสีย ${fmt(safety.radial[1],2)} มม. <b>ยังไม่ประเมินผ่าน/ไม่ผ่าน</b> เพราะต้องใช้เกณฑ์จากลูกสูบ/วาล์วจริง โดยเฉพาะหัว 4V ต้องวัดตัวที่ใกล้ที่สุด</p><div class="warning-box">ห้ามใช้สถานะนี้ยืนยันความปลอดภัยที่ RPM สูง: ต้องวัด P–V ทุกจังหวะในหน้าต่างวิกฤต ตรวจ radial, valve-to-valve, rocker interference และความแข็งสปริง/Valve Float ที่รอบใช้งานจริง</div><p class="cam-advisor-note">แหล่งอ้างอิง: <a target="_blank" rel="noopener noreferrer" href="https://www.compcams.com/cam-timing-lobe-separation-angle/">COMP Cams — Cam Timing</a> · <a target="_blank" rel="noopener noreferrer" href="https://www.compcams.com/valve-springs-101/">Valve Springs 101</a> · <a target="_blank" rel="noopener noreferrer" href="https://www.catcams.com/tabid/469/Default.aspx?DOCUMENTATION_id=1">Cat Cams — Checking Lift</a></p>`;
+}
+
 function tireDims(){const s=state.speed,m=/^(\d{2,3})\s*\/\s*(\d{2,3})\s*[-–]\s*(\d{1,2})/.exec(s.tire||'');let dia=NaN,circ=NaN;if(m){dia=Number(m[3])*25.4+2*Number(m[1])*Number(m[2])/100;circ=Math.PI*dia/1000;}const manual=safeNum(s.tireManual);if(valid(manual,0,6))circ=manual;return {dia,circ:circ*safeNum(s.rollingFactor)/100,nominal:circ,tire:s.tire};}
 function speedCalc(){const s=state.speed,t=tireDims(),rpm=safeNum(s.rpm),rpmNew=safeNum(s.rpmNew),slip=safeNum(s.slip),primary=safeNum(s.primary),gr=safeNum(s.gearRatio),front=safeNum(s.front),rear=safeNum(s.rear),newFront=safeNum(s.newFront),newRear=safeNum(s.newRear),cvt=safeNum(s.cvtRatio);
  const baseRatio=primary*gr*rear/front,modRatio=primary*gr*newRear/newFront;
@@ -392,7 +546,8 @@ $('#customForm').addEventListener('submit',e=>{e.preventDefault();const data=Obj
  const custom=readJSON(CUSTOM,[]),m={id:'custom-'+Date.now(),name:data.name.trim().slice(0,60),variant:'เพิ่มโดยผู้ใช้',category:'custom',bore:b,stroke:s,cyl:c,cr:null,type:data.type,source:null,quality:'custom',tire:'80/90-17',drive:null};custom.push(m);writeJSON(CUSTOM,custom);setModel(m.id);e.currentTarget.reset();});
 render();
 document.getElementById('runtimeNotice')?.remove();
-if('serviceWorker' in navigator && /^https?:$/.test(location.protocol)){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));}
+// Single-file GitHub Pages distribution: no SW registration, always permit fresh index.html updates.
+if('serviceWorker' in navigator && location.protocol==='https:'){navigator.serviceWorker.getRegistrations().then(rs=>rs.filter(r=>r.scope===new URL('./',location.href).href).forEach(r=>r.unregister())).catch(()=>{});}
 
 </script>
 </body>
